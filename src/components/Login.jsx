@@ -10,10 +10,12 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/Button";
 import { BeatLoader } from "react-spinners";
 import Error from "./Error";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from 'yup'
 import useFetch from "@/hooks/use-fetch";
 import { login } from "@/db/apiAuth";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { UrlState } from "@/Context";
 
 const Login = () => {
 
@@ -36,9 +38,31 @@ const Login = () => {
     }))
   }
 
+  const navigate = useNavigate()
+  let [searchParams] = useSearchParams()
+  // get Returns the first value associated to the given search parameter.
+  const longLink = searchParams.get("createNew")
+
+  // there can be a case where user have this createNew search param on the url and we have to route then to dashboard with that particular search param , because we want to create new url now after logging in
+
+
   const {data,error,loading,fn: fnLogin} = useFetch(login,formData)
 
+ const {fetchUser} =  UrlState()
+
+
   // fn is actual function we are calling if we want to login or whatever we have to make the api calls
+
+  useEffect(() => {
+    console.log(data);
+    if(error === null && data){
+      navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`)
+
+      fetchUser()
+
+    }
+  }, [data,error])
+  
 
   // validating the input
 
@@ -62,7 +86,7 @@ const Login = () => {
 
       // api call
 
-      // await fnLogin()
+      await fnLogin()
 
     } 
     catch (e) {
@@ -86,7 +110,7 @@ const Login = () => {
         <CardDescription>
           Login to your account if you already one
         </CardDescription>
-        <Error message={"some error"}/>
+        {error && <Error message={error.message}/>}
       </CardHeader>
 
       <CardContent className="space-y-2 ">
@@ -113,8 +137,10 @@ const Login = () => {
 
       </CardContent>
       <CardFooter>
-        <Button onClick={handleLogin}>
-          {true?<BeatLoader size={10} color="#00eeff"/>:"Login"}
+        <Button
+        className="border-2"
+         onClick={handleLogin}>
+          {loading?<BeatLoader size={10} color="#00eeff"/>:"Login"}
         </Button>
       </CardFooter>
     </Card>

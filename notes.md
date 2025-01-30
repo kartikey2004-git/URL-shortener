@@ -81,3 +81,20 @@ use-localstorage
 use-windowsize
 
 performance optimization and machine coding content as well , toh yaha se dekh lunga ki course content and google and chatgpt krlunga
+
+context and state management for our app which will handle the state of our user
+
+inside we will fetch current user session who is loggedIn
+
+signup logic likhna hai ab
+made a private route in process between
+
+row level security we are adding a level of authorization who can access our data , view our data , update or delete our data 
+
+Cascade: Deleting a record from public.urls will also delete any records that reference it in this table in database
+
+
+Whenever we click on a short link , its gonna gathered all the analytics like device , location, something like that but at this point it is not necessary , a user can be signed in or not , that is for all public , anyone can view my links
+
+ 
+we havent add the update URL functionality that's why we update urls wala policy nhi  banaya hai, if we want to add functionality in our app , i can definitely add that row level security
