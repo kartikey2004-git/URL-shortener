@@ -2,7 +2,7 @@ import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
 import { UrlState } from "@/Context";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
-import useFetch from "@/hooks/Use-fetch";
+import useFetch from "@/hooks/use-fetch";
 import { Copy, Download, LinkIcon, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";

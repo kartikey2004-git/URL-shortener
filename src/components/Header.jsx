@@ -11,7 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { LinkIcon, LogOut } from "lucide-react";
 import { UrlState } from "@/Context";
-import useFetch from "@/hooks/Use-fetch";
+import useFetch from "@/hooks/use-fetch";
 import { logout } from "@/db/apiAuth";
 import { BarLoader } from "react-spinners";
 
