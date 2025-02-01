@@ -5,8 +5,9 @@ import Dashboard from "./pages/Dashboard"
 import Auth from "./pages/Auth"
 import Link from "./pages/Link"
 import RedirectLinkPage from "./pages/RedirectLinkPage"
-import UrlProvider from "./context"
+
 import RequireAuth from "./components/Require-auth"
+import UrlProvider from "./context"
 
 const router = createBrowserRouter([
   {
