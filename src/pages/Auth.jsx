@@ -1,31 +1,28 @@
 import Login from "@/components/Login";
 import SignUp from "@/components/SignUp";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UrlState } from "@/Context";
+import { UrlState } from "@/context";
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Auth = () => {
   const [searchParams] = useSearchParams();
 
-  const LongLink = searchParams.get("createNew")
-  const navigate = useNavigate()
+  const LongLink = searchParams.get("createNew");
+  const navigate = useNavigate();
 
-  const {isAuthenticated,loading} = UrlState()
+  const { isAuthenticated, loading } = UrlState();
 
   useEffect(() => {
-    if(isAuthenticated && !loading){
-      navigate(`/dashboard?${LongLink ? `createNew=${LongLink}` : ""}`)
+    if (isAuthenticated && !loading) {
+      navigate(`/dashboard?${LongLink ? `createNew=${LongLink}` : ""}`);
     }
-  }, [isAuthenticated,loading])
-  
+  }, [isAuthenticated, loading]);
 
   return (
     <div className="mt-20 flex flex-col items-center  ml-10 gap-10 sm:">
       <h1 className="text-5xl font-extrabold">
-        { LongLink
-          ? "Hold up! Let's Login first..."
-          : "Login / Signup"}
+        {LongLink ? "Hold up! Let's Login first..." : "Login / Signup"}
         {/* searchParams.get() Returns the first value associated to the given search parameter. */}
       </h1>
 
@@ -37,15 +34,18 @@ const Auth = () => {
           >
             Login
           </TabsTrigger>
-          <TabsTrigger className="border-2 p-2 mr-2 hover:bg-gray-800" value="signup">
+          <TabsTrigger
+            className="border-2 p-2 mr-2 hover:bg-gray-800"
+            value="signup"
+          >
             SignUp
           </TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-          <Login/>
+          <Login />
         </TabsContent>
         <TabsContent value="signup">
-          <SignUp/>
+          <SignUp />
         </TabsContent>
       </Tabs>
     </div>

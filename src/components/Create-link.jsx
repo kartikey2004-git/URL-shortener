@@ -1,4 +1,4 @@
-import { UrlState } from "@/Context";
+import { UrlState } from "@/context";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import {
@@ -57,7 +57,6 @@ const CreateLink = () => {
     });
   };
 
-  
   const {
     loading,
     error,
@@ -66,10 +65,10 @@ const CreateLink = () => {
   } = useFetch(CreateUrl, { ...formValues, user_id: user.id });
 
   useEffect(() => {
-    if(error === null && data){
-      navigate(`/link/${data[0].id}`)
+    if (error === null && data) {
+      navigate(`/link/${data[0].id}`);
     }
-  },[error,data])
+  }, [error, data]);
 
   // logic of creating a url
   const createNewLink = async () => {
@@ -97,10 +96,9 @@ const CreateLink = () => {
 
       const canvas = ref.current.canvasRef.current;
 
-      const blob = await new Promise((resolve) => canvas.toBlob(resolve) )
+      const blob = await new Promise((resolve) => canvas.toBlob(resolve));
 
-      await fnCreateUrl(blob)
-
+      await fnCreateUrl(blob);
     } catch (e) {
       const newErrors = {};
 

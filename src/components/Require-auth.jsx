@@ -1,21 +1,21 @@
-import { UrlState } from "@/Context"
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { BarLoader } from "react-spinners"
+import { UrlState } from "@/context";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { BarLoader } from "react-spinners";
 
-function RequireAuth({children}){
+function RequireAuth({ children }) {
   // require auth function will take a component/page , means children as parameter in function is a component jo return krega
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const {loading, isAuthenticated} = UrlState()
+  const { loading, isAuthenticated } = UrlState();
 
   useEffect(() => {
-    if(!isAuthenticated && loading === false) navigate("/auth")
-  }, [isAuthenticated,loading])
-  
-  if(loading) return <BarLoader width={"100%"} color="#36d7b7"/>
+    if (!isAuthenticated && loading === false) navigate("/auth");
+  }, [isAuthenticated, loading]);
 
-  if(isAuthenticated) return children
+  if (loading) return <BarLoader width={"100%"} color="#36d7b7" />;
+
+  if (isAuthenticated) return children;
 }
 
-export default RequireAuth
+export default RequireAuth;

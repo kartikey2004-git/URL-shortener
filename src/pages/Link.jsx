@@ -2,7 +2,7 @@ import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
 import { UrlState } from "@/Context";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
-import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/Use-fetch";
 import { Copy, Download, LinkIcon, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -129,7 +129,6 @@ const Link = () => {
               )}
             </Button>
           </div>
-
           <img
             src={url?.qr}
             className="w-full self-center sm:self-start ring ring-blue-500 p-1 mr-3 object-contain"
@@ -153,12 +152,10 @@ const Link = () => {
                 </CardContent>
               </Card>
 
-
               <CardTitle>Location Data</CardTitle>
-              <LocationStats stats={stats}/>
+              <LocationStats stats={stats} />
               <CardTitle>Device Info</CardTitle>
-              <Device stats={stats}/>
-
+              <Device stats={stats} />
             </CardContent>
           ) : (
             <CardContent>

@@ -15,22 +15,22 @@ import * as Yup from "yup";
 import useFetch from "@/hooks/use-fetch";
 import { signup } from "@/db/apiAuth";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { UrlState } from "@/Context";
+import { UrlState } from "@/context";
 
 const SignUp = () => {
   // state for storing errors related to input validations
   const [errors, setErrors] = useState([]);
 
   const [formData, setFormData] = useState({
-    name:"",
+    name: "",
     email: "",
     password: "",
-    profile_pic: null
+    profile_pic: null,
   });
 
   // function to change all our inputs
   const handleInputChange = (e) => {
-    const { name, value , files} = e.target;
+    const { name, value, files } = e.target;
     setFormData((prevState) => ({
       // spread the previous state
       ...prevState,
@@ -59,7 +59,7 @@ const SignUp = () => {
 
       fetchUser();
     }
-  }, [error,loading]);
+  }, [error, loading]);
 
   // validating the input
 
@@ -69,14 +69,14 @@ const SignUp = () => {
     try {
       // schema for validating our inputs
       const schema = Yup.object().shape({
-        name:Yup.string().required("Name is required"),
+        name: Yup.string().required("Name is required"),
         email: Yup.string()
           .email("Invalid Email")
           .required("Email is required"),
         password: Yup.string()
           .min(6, "Password must be atleast 6 characters")
           .required("Password is required"),
-        profile_pic: Yup.mixed().required("Profile picture is required")
+        profile_pic: Yup.mixed().required("Profile picture is required"),
       });
 
       // abortEarly : Return from validation methods on the first error rather than after all validations run. Default - true
@@ -153,12 +153,14 @@ const SignUp = () => {
           />
           {errors.profile_pic && <Error message={errors.profile_pic} />}
         </div>
-
-
       </CardContent>
       <CardFooter>
         <Button className="border-2" onClick={handleSignUp}>
-          {loading ? <BeatLoader size={10} color="#00eeff" /> : "Create account"}
+          {loading ? (
+            <BeatLoader size={10} color="#00eeff" />
+          ) : (
+            "Create account"
+          )}
         </Button>
       </CardFooter>
     </Card>

@@ -6,63 +6,57 @@ import { UAParser } from "ua-parser-js";
 export async function getClicksforUrls(urlIds) {
   // we wantt to fetch clicks for urlIds named array
 
-  const {data,error} = await supabase
-  .from("clicks")
-  .select("*")
-  // The column to filter on
-  // Match only rows where column is included in the values array.
-  .in("url_id",urlIds)
+  const { data, error } = await supabase
+    .from("clicks")
+    .select("*")
+    // The column to filter on
+    // Match only rows where column is included in the values array.
+    .in("url_id", urlIds);
 
-  if(error) {
+  if (error) {
     console.log(error.message);
-    throw new Error("Unable to load clicks")
+    throw new Error("Unable to load clicks");
   }
-  return data
-} 
-
+  return data;
+}
 
 // creating api , after we found our original url, we have to store the stats for that particular user like device location etc...
 
+const parser = new UAParser();
 
-const parser = new UAParser()
-
-export const storeClicks = async ({id,originalUrl}) => {
+export const storeClicks = async ({ id, originalUrl }) => {
   try {
-    const res =  parser.getResult()
+    const res = parser.getResult();
 
     // function to get result about user device
-    const device = res.type || "desktop"
+    const device = res.type || "desktop";
 
-    const response = await fetch("https://ipapi.co/json")
+    const response = await fetch("https://ipapi.co/json");
 
-    const {city,country_name: country} = await response.json()
+    const { city, country_name: country } = await response.json();
 
-    await supabase.from("clicks")
-    .insert({
+    await supabase.from("clicks").insert({
       url_id: id,
       city: city,
       country: country,
-      device: device
-    })
+      device: device,
+    });
 
-    window.location.href = originalUrl
-
+    window.location.href = originalUrl;
   } catch (error) {
-    console.log("Error recording click:",error);
+    console.log("Error recording click:", error);
   }
-}
-
+};
 
 export async function getClicksForUrl(url_id) {
+  const { data, error } = await supabase
+    .from("clicks")
+    .select("*")
+    .eq("url_id", url_id);
 
-  const {data,error} = await supabase
-  .from("clicks")
-  .select("*")
-  .eq("url_id",url_id)
-
-  if(error) {
+  if (error) {
     console.log(error.message);
-    throw new Error("Unable to load stats")
+    throw new Error("Unable to load stats");
   }
-  return data
-} 
+  return data;
+}

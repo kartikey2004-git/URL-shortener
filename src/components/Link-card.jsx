@@ -58,10 +58,12 @@ const LinkCard = ({ url, fetchUrls }) => {
 
       <div className="flex gap-2 lg: w-18 h-1/2 mt-12">
         {/* navigate function comes inbuilt inside of our browser */}
-        <Button onClick={() => {
-          navigator.clipboard.writeText(`${url?.short_url}`)
-          setOpen(true)
-          }}>
+        <Button
+          onClick={() => {
+            navigator.clipboard.writeText(`${url?.short_url}`);
+            setOpen(true);
+          }}
+        >
           <Copy />
         </Button>
         <Dialog className="" open={open} onClose={() => setOpen(false)}>
@@ -82,7 +84,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         </Button>
 
         <Button onClick={() => fnDelete().then(() => fetchUrls())}>
-          {loadingDelete? <BeatLoader size={5} color="white"/> : <Trash/>}
+          {loadingDelete ? <BeatLoader size={5} color="white" /> : <Trash />}
         </Button>
       </div>
     </div>

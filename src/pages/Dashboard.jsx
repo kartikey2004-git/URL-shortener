@@ -3,7 +3,7 @@ import Error from "@/components/Error";
 import LinkCard from "@/components/Link-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { UrlState } from "@/Context";
+import { UrlState } from "@/context";
 import { getClicksforUrls } from "@/db/apiClicks";
 import { getUrls } from "@/db/apiUrls";
 import useFetch from "@/hooks/use-fetch";
@@ -82,7 +82,7 @@ const Dashboard = () => {
 
       <div className="flex justify-between">
         <h1 className="text-4xl font-extrabold">My Links</h1>
-        <CreateLink/>
+        <CreateLink />
       </div>
 
       <div className="relative">
@@ -96,8 +96,8 @@ const Dashboard = () => {
         />
         <Filter className="absolute top-2 right-2 p-1" />
         {error && <Error message={error?.message} />}
-        {(filteredUrls || []).map((url,id) => {
-          return <LinkCard key={id} url={url} fetchUrls={fnUrls}/>
+        {(filteredUrls || []).map((url, id) => {
+          return <LinkCard key={id} url={url} fetchUrls={fnUrls} />;
         })}
       </div>
     </div>

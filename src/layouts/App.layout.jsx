@@ -1,22 +1,20 @@
-import Header from "@/components/Header"
-import { Outlet } from "react-router-dom"
-
+import Header from "@/components/Header";
+import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <div>
       <main className="min-h-screen container">
-        <Header/>
+        <Header />
         {/* Body */}
-        <Outlet/>
+        <Outlet />
       </main>
 
-
-      <div className="p-10 text-center bg-gray-800 mt-10">
+      <div className="p-10 text-center bg-gray-800 w-full mt-10">
         Made with 💗 by Kartikey
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AppLayout
+export default AppLayout;
