@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "./ui/button";
+import { Button } from "./ui/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
