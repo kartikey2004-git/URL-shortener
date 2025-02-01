@@ -3,7 +3,7 @@ import Error from "@/components/Error";
 import LinkCard from "@/components/Link-card";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { UrlState } from "@/context";
+import { UrlState } from "@/Context";
 import { getClicksforUrls } from "@/db/apiClicks";
 import { getUrls } from "@/db/apiUrls";
 import useFetch from "@/hooks/use-fetch";
