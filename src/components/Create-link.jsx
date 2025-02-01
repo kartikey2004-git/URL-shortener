@@ -1,4 +1,4 @@
-import { UrlState } from "@/Context";
+import { UrlState } from "@/context";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import {
