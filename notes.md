@@ -98,3 +98,37 @@ Whenever we click on a short link , its gonna gathered all the analytics like de
 
  
 we havent add the update URL functionality that's why we update urls wala policy nhi  banaya hai, if we want to add functionality in our app , i can definitely add that row level security
+
+
+if there are clicks associated with the URl , it well be delete as well over here
+
+we are using library for creating qr code logo : react create qr code logo
+
+
+
+
+
+
+
+In React, when you encounter this line:
+
+js
+const canvas = ref.current.canvasRef.current
+
+
+it's dealing with *refs*, a way in React to access and manipulate DOM elements or React components directly.
+
+To explain this line specifically:
+
+1. **ref**: This is a reference to a DOM element or a React component. It is created using React.createRef() or useRef(). ref.current gives access to the actual DOM element or the instance of a class component.
+
+2. **ref.current.canvasRef**: In this context, it assumes that ref.current is referring to a custom component that has a **canvasRef** property. This is likely a reference to a <canvas> element within that component.
+
+3. **ref.current.canvasRef.current**: Since canvasRef is also a ref itself (probably created inside the custom component to reference a <canvas> element), this gives access to the actual DOM element of the canvas.
+
+ua parser library for data of location and device etc
+and we are manually making an API calls here and store all over analytics 
+
+there are better ways to do this well for more optimised clicks like by a kafka queue
+
+recharts api for graph

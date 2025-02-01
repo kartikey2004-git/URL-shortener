@@ -21,7 +21,7 @@ const Auth = () => {
   
 
   return (
-    <div className="mt-20 flex flex-col items-center gap-10">
+    <div className="mt-20 flex flex-col items-center  ml-10 gap-10 sm:">
       <h1 className="text-5xl font-extrabold">
         { LongLink
           ? "Hold up! Let's Login first..."

@@ -35,7 +35,7 @@ const LandingPage = () => {
           onChange={(e) => setLongUrl(e.target.value)}
           className="h-full flex-1 py-4 px-4 bg-transparent"
         />
-        <Button className="h-full" type="submit" variant="destructive">
+        <Button className="h-full border-2 ml-4" type="submit" variant="destructive">
           Shorten !
         </Button>
       </form>
@@ -52,10 +52,10 @@ const LandingPage = () => {
         </AccordionItem>
 
         <AccordionItem value="item-2">
-          <AccordionTrigger>How URL shortener works?
+          <AccordionTrigger>Is it free to access?
           </AccordionTrigger>
           <AccordionContent>
-            When you enters a long URL , our system generates a shorter version of that URL . This shortened URL redirects to the original long URL when accessed
+            Yes , It is totally free to access , you just need to signup in case of not having account loggedIn or just login with your current account
           </AccordionContent>
         </AccordionItem>
 
@@ -67,7 +67,7 @@ const LandingPage = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
+      </div>
   );
 };
 

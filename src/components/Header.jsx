@@ -45,7 +45,7 @@ const Header = () => {
             </DropdownMenuTrigger>
 
 
-            <DropdownMenuContent>
+            <DropdownMenuContent className="bg-gray-950">
               <DropdownMenuLabel>{user?.user_metadata?.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
