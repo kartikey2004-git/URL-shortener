@@ -15,7 +15,7 @@ import Error from "./Error";
 import { Card } from "./ui/card";
 import { useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/Use-fetch";
 import { QRCode } from "react-qrcode-logo";
 import { CreateUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";

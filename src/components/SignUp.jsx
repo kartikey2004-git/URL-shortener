@@ -12,7 +12,7 @@ import { BeatLoader } from "react-spinners";
 import Error from "./Error";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
-import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/Use-fetch";
 import { signup } from "@/db/apiAuth";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { UrlState } from "@/context";

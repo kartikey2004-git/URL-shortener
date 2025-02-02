@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Copy, Download, Trash } from "lucide-react";
 import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
 import { useState } from "react";
-import useFetch from "@/hooks/use-fetch";
+import useFetch from "@/hooks/Use-fetch";
 import { deleteUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
