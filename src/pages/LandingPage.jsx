@@ -50,28 +50,23 @@ const LandingPage = () => {
         <AccordionItem value="item-1">
           <AccordionTrigger>How URL shortener works?</AccordionTrigger>
           <AccordionContent>
-            When you enters a long URL , our system generates a shorter version
-            of that URL . This shortened URL redirects to the original long URL
-            when accessed
+          When you enter a long URL, our system generates a shorter version of it. This shortened URL will redirect to the original long URL when accessed.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-2">
-          <AccordionTrigger>Is it free to access?</AccordionTrigger>
+          <AccordionTrigger>Is it free to use?</AccordionTrigger>
           <AccordionContent>
-            Yes , It is totally free to access , you just need to signup in case
-            of not having account loggedIn or just login with your current
-            account
+          Yes, it is completely free to use. You only need to sign up if you dont have an account, or simply log in with your existing account.
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-3">
           <AccordionTrigger>
-            Do I nedd an account to use the app?
+          Do I have to create an account to use ?
           </AccordionTrigger>
           <AccordionContent>
-            Yes . Creating an account allows you to manage your URLs , view
-            analytics and customize your short URLs.
+          Yes, creating an account lets you manage your URLs, view analytics, and customize your shortened links.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
