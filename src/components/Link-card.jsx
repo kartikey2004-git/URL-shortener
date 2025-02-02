@@ -39,7 +39,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         alt="Qr code"
       />
 
-      <Link to={`/link/${url?.id}`} className="flex flex-col flex-1">
+      <Link to={`/${url?.id}`} className="flex flex-col flex-1">
         <span className="text-3xl mb-5  hover:underline cursor-pointer">
           {url?.title}
         </span>
