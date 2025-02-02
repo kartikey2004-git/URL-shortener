@@ -44,7 +44,7 @@ const LinkCard = ({ url, fetchUrls }) => {
           {url?.title}
         </span>
         <span className="text-2xl text-blue-500  hover:underline cursor-pointer mb-2">
-          {url?.custom_url ? url?.custom_url : url?.short_url}
+          Domain_name/{url?.custom_url ? url?.custom_url : url?.short_url}
         </span>
 
         <span className="flex items-center gap-1 hover:underline cursor-pointer mb-2">
@@ -68,7 +68,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         </Button>
         <Dialog className="" open={open} onClose={() => setOpen(false)}>
           <DialogContent className="bg-gray-600 text-white">
-            Text copied : {`${url?.short_url}`}
+            Domain_name/{`${url?.short_url}`}
           </DialogContent>
           <DialogActions className="bg-gray-600">
             <Button className="bg-white" onClick={() => setOpen(false)}>
