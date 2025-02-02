@@ -15,7 +15,7 @@ import * as Yup from "yup";
 import useFetch from "@/hooks/Use-fetch";
 import { signup } from "@/db/apiAuth";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { UrlState } from "@/context";
+import { UrlState } from "../Context";
 
 const SignUp = () => {
   // state for storing errors related to input validations
