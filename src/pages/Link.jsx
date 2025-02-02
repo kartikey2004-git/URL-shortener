@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
-import { UrlState } from "@/Context";
+import { UrlState } from "../Context.jsx";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
 import useFetch from "@/hooks/Use-fetch";
