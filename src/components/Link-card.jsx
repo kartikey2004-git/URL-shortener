@@ -7,6 +7,8 @@ import useFetch from "@/hooks/Use-fetch";
 import { deleteUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const LinkCard = ({ url, fetchUrls }) => {
   const [open, setOpen] = useState(false);
 
@@ -44,7 +46,7 @@ const LinkCard = ({ url, fetchUrls }) => {
           {url?.title}
         </span>
         <span className="text-2xl text-blue-500  hover:underline cursor-pointer mb-2">
-          Domain_name/{url?.custom_url ? url?.custom_url : url?.short_url}
+          {`${baseUrl}`}/{url?.custom_url ? url?.custom_url : url?.short_url}
         </span>
 
         <span className="flex items-center gap-1 hover:underline cursor-pointer mb-2">
@@ -60,7 +62,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         {/* navigate function comes inbuilt inside of our browser */}
         <Button
           onClick={() => {
-            navigator.clipboard.writeText(`${url?.short_url}`);
+            navigator.clipboard.writeText(`${baseUrl}/${url?.short_url}`);
             setOpen(true);
           }}
         >
@@ -68,7 +70,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         </Button>
         <Dialog className="" open={open} onClose={() => setOpen(false)}>
           <DialogContent className="bg-gray-600 text-white">
-            Domain_name/{`${url?.short_url}`}
+          {baseUrl}/{url?.short_url}
           </DialogContent>
           <DialogActions className="bg-gray-600">
             <Button className="bg-white" onClick={() => setOpen(false)}>

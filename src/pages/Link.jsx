@@ -11,6 +11,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LocationStats from "@/components/Location-stats";
 import Device from "@/components/Device-stats";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const Link = () => {
   const [open, setOpen] = useState(false);
 
@@ -70,15 +72,15 @@ const Link = () => {
 
       <div className="ml-6 flex flex-col gap-8 sm:flex-row justify-between">
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
-          <span className="text-6xl font-extrabold hover:underline cursor-pointer">
+          <span className="text-5xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
           </span>
           <a
-            href={link}
+            href={`${baseUrl}/${link}`}
             target="_blank"
             className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            {link}
+            {`${baseUrl}`}/{link}
           </a>
 
           <a
@@ -98,7 +100,7 @@ const Link = () => {
             {/* navigate function comes inbuilt inside of our browser */}
             <Button
               onClick={() => {
-                navigator.clipboard.writeText(`${url?.short_url}`);
+                navigator.clipboard.writeText(`${baseUrl}/${url?.short_url}`);
                 setOpen(true);
               }}
             >
@@ -106,7 +108,7 @@ const Link = () => {
             </Button>
             <Dialog className="" open={open} onClose={() => setOpen(false)}>
               <DialogContent className="bg-gray-600 text-white">
-                Text copied : {`${url?.short_url}`}
+              {baseUrl}/{url?.short_url}
               </DialogContent>
               <DialogActions className="bg-gray-600">
                 <Button className="bg-white" onClick={() => setOpen(false)}>

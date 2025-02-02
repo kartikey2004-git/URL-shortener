@@ -20,6 +20,8 @@ import { QRCode } from "react-qrcode-logo";
 import { CreateUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const CreateLink = () => {
   const { user } = UrlState();
   const navigate = useNavigate();
@@ -152,7 +154,7 @@ const CreateLink = () => {
         {error && <Error message={error.message} />}
 
         <div className="flex items-center gap-2 mb-3">
-          <Card className="p-2">kartikey.in</Card>/
+          <Card className="p-2">{baseUrl}</Card>/
           <Input
             id="customUrl"
             value={formValues.customUrl}
