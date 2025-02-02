@@ -77,7 +77,7 @@
 
 @layer base{
   :root{
-    background-color: #030712;
+    background-color: rgb(0,3,25);
     color: white;
   }
 }
