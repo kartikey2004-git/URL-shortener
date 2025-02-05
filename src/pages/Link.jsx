@@ -70,7 +70,7 @@ const Link = () => {
         <BarLoader className="mb-4" width={"!00%"} color="#36d7b7" />
       )}
 
-      <div className="ml-6 flex flex-col gap-8 sm:flex-row justify-between">
+      <div className="ml-3 flex flex-col gap-8 sm:flex-row justify-between">
         <div className="flex flex-col items-start gap-8 rounded-lg sm:w-2/5">
           <span className="text-5xl font-extrabold hover:underline cursor-pointer">
             {url?.title}
@@ -78,7 +78,7 @@ const Link = () => {
           <a
             href={`${baseUrl}/${link}`}
             target="_blank"
-            className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
+            className="text-3xl sm:text-4xl md:text-xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
             {`${baseUrl}`}/{link}
           </a>
@@ -138,7 +138,7 @@ const Link = () => {
           />
         </div>
 
-        <Card className="sm:w-3/5 mr-6 sm:ml-9">
+        <Card className="sm:w-3/5 mr-2 sm:ml-9">
           <CardHeader>
             <CardTitle className="text-4xl font-extrabold">Stats</CardTitle>
           </CardHeader>
