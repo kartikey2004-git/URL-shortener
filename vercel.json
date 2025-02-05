@@ -1,9 +1,5 @@
 {
   "routes": [
-    { "src": "/", "dest": "/" },
-    { "src": "/dashboard", "dest": "/" },
-    { "src": "/auth", "dest": "/" },
-    { "src": "/link/:id", "dest": "/" },
-    { "src": "/:id" , "dest":"/"}
+    { "src": "/*", "dest": "/" }
   ]
 }
