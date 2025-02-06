@@ -60,7 +60,7 @@ const Header = () => {
                     onClick={() => {
                       fnLogout().then(() => {
                         fetchUser();
-                        navigate("/");
+                        navigate("/auth");
                       });
                     }}
                   >

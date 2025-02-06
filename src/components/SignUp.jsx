@@ -19,7 +19,7 @@ import { UrlState } from "../Context";
 
 const SignUp = () => {
   // state for storing errors related to input validations
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     name: "",

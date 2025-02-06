@@ -132,3 +132,5 @@ and we are manually making an API calls here and store all over analytics
 there are better ways to do this well for more optimised clicks like by a kafka queue
 
 recharts api for graph
+
+we need to learn how to host domain on hostinger later and all about domain later

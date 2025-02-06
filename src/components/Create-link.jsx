@@ -21,6 +21,8 @@ import { CreateUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
+// console.log(baseUrl);
+
 
 const CreateLink = () => {
   const { user } = UrlState();
@@ -30,7 +32,7 @@ const CreateLink = () => {
   const ref = useRef();
 
   let [searchParams, setSearchParams] = useSearchParams();
-  const LongLink = searchParams.get("createdNew");
+  const LongLink = searchParams.get("createNew");
 
   // what we want as soon as user lands on dashboard page , we want to show and popup with this longURl prefilled
 
@@ -151,7 +153,8 @@ const CreateLink = () => {
           placeholder="Enter your long URL"
         />
 
-        {error && <Error message={error.message} />}
+         {errors.longUrl && <Error message={errors.longUrl} />}
+
 
         <div className="flex items-center gap-2 mb-3">
           <Card className="p-2">{baseUrl}</Card>/
@@ -163,7 +166,7 @@ const CreateLink = () => {
             placeholder="Custom Link char(6-34) (optional)"
           />
         </div>
-        {errors.customUrl && <Error message={errors.customUrl} />}
+        {error && <Error message={errors.message} />}
 
         <DialogFooter className="sm:justify-start">
           <Button

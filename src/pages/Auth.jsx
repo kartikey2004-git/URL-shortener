@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Auth = () => {
-  const [searchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
 
   const LongLink = searchParams.get("createNew");
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Auth = () => {
   return (
     <div className="mt-20 flex flex-col items-center  ml-10 gap-10 sm:">
       <h1 className="text-5xl font-extrabold">
-        {LongLink ? "Hold up! Let's Login first..." : "Login / Signup"}
+        {searchParams.get("createNew") ? "Hold up! Let's Login first..." : "Login / Signup"}
         {/* searchParams.get() Returns the first value associated to the given search parameter. */}
       </h1>
 

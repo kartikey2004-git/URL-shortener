@@ -9,7 +9,7 @@ import { BeatLoader } from "react-spinners";
 
 const baseUrl = import.meta.env.VITE_BASE_URL;
 
-const LinkCard = ({ url, fetchUrls }) => {
+const LinkCard = ({ url , fetchUrls }) => {
   const [open, setOpen] = useState(false);
 
   //fetchUrls because after deleting the urls , we have to refetch the urls
@@ -68,6 +68,7 @@ const LinkCard = ({ url, fetchUrls }) => {
         >
           <Copy />
         </Button>
+
         <Dialog className="" open={open} onClose={() => setOpen(false)}>
           <DialogContent className="bg-gray-600 text-white">
           {baseUrl}/{url?.short_url}
@@ -85,7 +86,7 @@ const LinkCard = ({ url, fetchUrls }) => {
           <Download />
         </Button>
 
-        <Button onClick={() => fnDelete().then(() => fetchUrls())}>
+        <Button variant="ghost" onClick={() => fnDelete().then(() => fetchUrls())}>
           {loadingDelete ? <BeatLoader size={5} color="white" /> : <Trash />}
         </Button>
       </div>
