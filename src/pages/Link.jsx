@@ -100,7 +100,7 @@ const Link = () => {
             {/* navigate function comes inbuilt inside of our browser */}
             <Button
               onClick={() => {
-                navigator.clipboard.writeText(`${baseUrl}/${url?.short_url}`);
+                navigator.clipboard.writeText(`${baseUrl}/${link}`);
                 setOpen(true);
               }}
             >
@@ -108,7 +108,7 @@ const Link = () => {
             </Button>
             <Dialog className="" open={open} onClose={() => setOpen(false)}>
               <DialogContent className="bg-gray-600 text-white">
-              {baseUrl}/{url?.short_url}
+              {baseUrl}/{link}
               </DialogContent>
               <DialogActions className="bg-gray-600">
                 <Button className="bg-white" onClick={() => setOpen(false)}>
