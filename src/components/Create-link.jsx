@@ -20,9 +20,6 @@ import { QRCode } from "react-qrcode-logo";
 import { CreateUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
-// console.log(baseUrl);
-
 
 const CreateLink = () => {
   const { user } = UrlState();
@@ -122,7 +119,7 @@ const CreateLink = () => {
         if (!res) setSearchParams({});
       }}
     >
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button className="bg-red-600">Create New Link</Button>
       </DialogTrigger>
       <DialogContent className="bg-gray-950 sm:max-w-md">
@@ -157,7 +154,7 @@ const CreateLink = () => {
 
 
         <div className="flex items-center gap-2 mb-3">
-          <Card className="p-2">{baseUrl}</Card>/
+          <Card className="p-2">url.elixircommunity.in</Card>/
           <Input
             id="customUrl"
             value={formValues.customUrl}

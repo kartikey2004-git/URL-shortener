@@ -37,6 +37,10 @@ const Dashboard = () => {
     fnUrls();
   }, []);
 
+  const filteredUrls = urls?.filter((url) =>
+    url.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   useEffect(() => {
     if (urls?.length) fnClicks();
   }, [urls?.length]);
@@ -47,10 +51,6 @@ const Dashboard = () => {
   // agar url ka title includes our searchquery jo ki lowercase mein hai , iske baad humein filtered urls mil jayenge
 
   // agar there is nothing inside searchquery , it returns all the urls
-
-  const filteredUrls = urls?.filter((url) =>
-    url.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="flex flex-col gap-8 ml-6 mr-6">

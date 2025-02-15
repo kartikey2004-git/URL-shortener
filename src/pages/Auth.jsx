@@ -17,7 +17,7 @@ const Auth = () => {
     if (isAuthenticated && !loading) {
       navigate(`/dashboard?${LongLink ? `createNew=${LongLink}` : ""}`);
     }
-  }, [isAuthenticated, loading]);
+  }, [isAuthenticated, loading, navigate]);
 
   return (
     <div className="mt-20 flex flex-col items-center  ml-10 gap-10 sm:">

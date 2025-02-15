@@ -1,33 +1,36 @@
-import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
+import { Button } from "@/components/ui/Button.jsx";
 import { UrlState } from "../Context.jsx";
 import { getClicksForUrl } from "@/db/apiClicks";
 import { deleteUrl, getUrl } from "@/db/apiUrls";
 import useFetch from "@/hooks/Use-fetch";
 import { Copy, Download, LinkIcon, Trash } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BarLoader, BeatLoader } from "react-spinners";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import LocationStats from "@/components/Location-stats";
 import Device from "@/components/Device-stats";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
+
 
 const Link = () => {
-  const [open, setOpen] = useState(false);
 
   const downloadImage = () => {
     const imageUrl = url?.qr;
     const fileName = url?.title;
 
+    // Create an anchor element
     const anchor = document.createElement("a");
     anchor.href = imageUrl;
     anchor.download = fileName;
 
+    // Append the anchor to the body
     document.body.appendChild(anchor);
 
+     // Trigger the download by simulating a click event
     anchor.click();
 
+    // Remove the anchor from the document
     document.body.removeChild(anchor);
   };
 
@@ -52,8 +55,11 @@ const Link = () => {
 
   useEffect(() => {
     fn();
-    fnStats();
   }, []);
+
+  useEffect(() => {
+    if (!error && loading === false) fnStats();
+  }, [loading, error]);
 
   if (error) {
     navigate("/dashboard");
@@ -76,11 +82,11 @@ const Link = () => {
             {url?.title}
           </span>
           <a
-            href={`${baseUrl}/${link}`}
+            href={`https://url.elixircommunity.in/${link}`}
             target="_blank"
             className="text-3xl sm:text-4xl md:text-xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            {`${baseUrl}`}/{link}
+            https://url.elixircommunity.in/{link}
           </a>
 
           <a
@@ -100,30 +106,25 @@ const Link = () => {
             {/* navigate function comes inbuilt inside of our browser */}
             <Button
               onClick={() => {
-                navigator.clipboard.writeText(`${baseUrl}/${link}`);
-                setOpen(true);
+                navigator.clipboard.writeText(`https://url.elixircommunity.in/${link}`);
               }}
             >
               <Copy />
             </Button>
-            <Dialog className="" open={open} onClose={() => setOpen(false)}>
-              <DialogContent className="bg-gray-600 text-white">
-              {baseUrl}/{link}
-              </DialogContent>
-              <DialogActions className="bg-gray-600">
-                <Button className="bg-white" onClick={() => setOpen(false)}>
-                  <span className="text-white h-10 border-2 p-2 rounded-md">
-                    Ok
-                  </span>
-                </Button>
-              </DialogActions>
-            </Dialog>
 
             <Button onClick={downloadImage}>
               <Download />
             </Button>
 
-            <Button onClick={() => fnDelete()}>
+            <Button
+              variant="ghost"
+              onClick={() =>
+                fnDelete().then(() => {
+                  navigate("/dashboard");
+                })
+              }
+              disable={loadingDelete}
+            >
               {loadingDelete ? (
                 <BeatLoader size={5} color="white" />
               ) : (

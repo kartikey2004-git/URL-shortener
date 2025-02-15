@@ -1,31 +1,31 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { Copy, Download, Trash } from "lucide-react";
-import { Button, Dialog, DialogContent, DialogActions } from "@mui/material";
-import { useState } from "react";
+import { Button} from "@/components/ui/Button"
 import useFetch from "@/hooks/Use-fetch";
 import { deleteUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
-
 const LinkCard = ({ url , fetchUrls }) => {
-  const [open, setOpen] = useState(false);
 
   //fetchUrls because after deleting the urls , we have to refetch the urls
 
   const downloadImage = () => {
     const imageUrl = url?.qr;
-    const fileName = url?.title;
+    const fileName = url?.title; // Desired file name for the downloaded image
 
+    // Create an anchor element
     const anchor = document.createElement("a");
     anchor.href = imageUrl;
     anchor.download = fileName;
 
+    // Append the anchor to the body
     document.body.appendChild(anchor);
 
+    // Trigger the download by simulating a click event
     anchor.click();
 
+    // Remove the anchor from the document
     document.body.removeChild(anchor);
   };
 
@@ -46,7 +46,7 @@ const LinkCard = ({ url , fetchUrls }) => {
           {url?.title}
         </span>
         <span className="text-2xl text-blue-500  hover:underline cursor-pointer mb-2">
-          {`${baseUrl}`}/{url?.custom_url ? url?.custom_url : url?.short_url}
+        https://url.elixircommunity.in/{url?.custom_url ? url?.custom_url : url?.short_url}
         </span>
 
         <span className="flex items-center gap-1 hover:underline cursor-pointer mb-2">
@@ -62,25 +62,11 @@ const LinkCard = ({ url , fetchUrls }) => {
         {/* navigate function comes inbuilt inside of our browser */}
         <Button
           onClick={() => {
-            navigator.clipboard.writeText(`${baseUrl}/${url?.short_url}`);
-            setOpen(true);
+            navigator.clipboard.writeText(`https://url.elixircommunity.in/${url?.short_url}`);
           }}
         >
           <Copy />
         </Button>
-
-        <Dialog className="" open={open} onClose={() => setOpen(false)}>
-          <DialogContent className="bg-gray-600 text-white">
-          {baseUrl}/{url?.short_url}
-          </DialogContent>
-          <DialogActions className="bg-gray-600">
-            <Button className="bg-white" onClick={() => setOpen(false)}>
-              <span className="text-white h-10 border-2 p-2 rounded-md">
-                Ok
-              </span>
-            </Button>
-          </DialogActions>
-        </Dialog>
 
         <Button onClick={downloadImage}>
           <Download />
