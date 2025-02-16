@@ -1,68 +1,57 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import { Copy, Download, Trash } from "lucide-react";
-import { Button} from "@/components/ui/Button"
+import { Button } from "@/components/ui/Button";
 import useFetch from "@/hooks/Use-fetch";
 import { deleteUrl } from "@/db/apiUrls";
 import { BeatLoader } from "react-spinners";
 
-const LinkCard = ({ url , fetchUrls }) => {
 
-  //fetchUrls because after deleting the urls , we have to refetch the urls
-
+const LinkCard = ({ url, fetchUrls }) => {
   const downloadImage = () => {
     const imageUrl = url?.qr;
-    const fileName = url?.title; // Desired file name for the downloaded image
+    const fileName = url?.title;
 
-    // Create an anchor element
     const anchor = document.createElement("a");
     anchor.href = imageUrl;
     anchor.download = fileName;
 
-    // Append the anchor to the body
     document.body.appendChild(anchor);
-
-    // Trigger the download by simulating a click event
     anchor.click();
-
-    // Remove the anchor from the document
     document.body.removeChild(anchor);
   };
 
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, url?.id);
 
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   return (
-    <div className="flex flex-col md:flex-row mb-4 border-none gap-5 border p-4 bg-gray-900 rounded-lg">
+    <div className="flex flex-col md:flex-row items-start md:items-center mb-4 p-4 bg-gray-900 rounded-lg shadow-lg gap-4 md:gap-6">
       <img
         src={url?.qr}
-        // self start for aligning left to screen when on mobile screen
-
-        className="h-32 object-contain ring ring-blue-500 self-start"
+        className="h-32 w-32 object-contain ring ring-blue-500"
         alt="Qr code"
       />
 
-      <Link to={`/link/${url?.id}`} className="flex flex-col flex-1">
-        <span className="text-3xl mb-5  hover:underline cursor-pointer">
+      <Link to={`/link/${url?.id}`} className="flex-1">
+        <span className="text-lg md:text-2xl font-semibold mb-2 md:mb-4 block hover:underline cursor-pointer">
           {url?.title}
         </span>
-        <span className="text-2xl text-blue-500  hover:underline cursor-pointer mb-2">
-        https://url.elixircommunity.in/{url?.custom_url ? url?.custom_url : url?.short_url}
+        <span className="text-sm md:text-lg text-blue-500 mb-2 hover:underline cursor-pointer block">
+        {`${baseUrl}${url?.custom_url || url?.short_url}`}
         </span>
-
-        <span className="flex items-center gap-1 hover:underline cursor-pointer mb-2">
+        <span className="text-xs md:text-sm text-gray-400 break-all mb-2 block">
           {url?.original_url}
         </span>
-
-        <span className="flex items-end font-extralight text-sm flex-1">
+        <span className="text-xs md:text-sm text-gray-500">
           {new Date(url?.created_at).toLocaleString()}
         </span>
       </Link>
 
-      <div className="flex gap-2 lg: w-18 h-1/2 mt-12">
-        {/* navigate function comes inbuilt inside of our browser */}
+      <div className="flex gap-2 items-center mt-4 md:mt-0">
         <Button
           onClick={() => {
-            navigator.clipboard.writeText(`https://url.elixircommunity.in/${url?.short_url}`);
+            navigator.clipboard.writeText(`${baseUrl}${url?.short_url}`);
           }}
         >
           <Copy />

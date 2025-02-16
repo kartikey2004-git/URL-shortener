@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Login from "@/components/Login";
 import SignUp from "@/components/SignUp";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,22 +21,24 @@ const Auth = () => {
   }, [isAuthenticated, loading, navigate]);
 
   return (
-    <div className="mt-20 flex flex-col items-center  ml-10 gap-10 sm:">
-      <h1 className="text-5xl font-extrabold">
-        {searchParams.get("createNew") ? "Hold up! Let's Login first..." : "Login / Signup"}
+    <div className="mt-20 flex flex-col items-center  ml-10 gap-10">
+      <h1 className="text-3xl md:text-5xl font-extrabold">
+        {searchParams.get("createNew")
+          ? "Hold up! Let's Login first..."
+          : "Login / Signup"}
         {/* searchParams.get() Returns the first value associated to the given search parameter. */}
       </h1>
 
       <Tabs defaultValue="login" className="w-[400px]">
-        <TabsList className="grid w-full grid-cols-2 gap-5">
+        <TabsList className="grid w-full grid-cols-2 gap-2">
           <TabsTrigger
-            className="border-2 p-2 mr-2 hover:bg-gray-800"
+            className=" p-2 ml-6 border-gray-500 border-b-2 border-l-2 border-t-2 border-spacing-11 border-r-2 hover:bg-gray-800  transition ease-linear"
             value="login"
           >
             Login
           </TabsTrigger>
           <TabsTrigger
-            className="border-2 p-2 mr-2 hover:bg-gray-800"
+            className="p-2 mr-6 border-b-2 border-gray-500 border-r-2 border-t-2 border-l-2 border-spacing-11 hover:bg-gray-800"
             value="signup"
           >
             SignUp

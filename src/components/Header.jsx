@@ -21,19 +21,25 @@ const Header = () => {
   const { loading, fn: fnLogout } = useFetch(logout);
 
   const { user, fetchUser } = UrlState();
+
   return (
     <>
-      <nav className="py-4 ml-3 mr-6 md:mr-3 flex justify-between items-center">
+      <nav className="py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <Link to="/">
-          <img src="/logo.png" className="h-16" alt="Trimmer Logo" />
+          <img src="/logo.png" className="h-12 sm:h-14 lg:h-16" alt="Trimmer Logo" />
         </Link>
 
         <div>
           {!user ? (
-            <Button onClick={() => navigate("/auth")}>Login</Button>
+            <Button
+              onClick={() => navigate("/auth")}
+              className="text-sm sm:text-base"
+            >
+              Login
+            </Button>
           ) : (
             <DropdownMenu>
-              <DropdownMenuTrigger className="w-10 rounded-full overflow-hidden">
+              <DropdownMenuTrigger className="w-10 sm:w-10 rounded-full overflow-hidden">
                 <Avatar>
                   <AvatarImage
                     className="object-cover"
@@ -43,7 +49,7 @@ const Header = () => {
                 </Avatar>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent className="bg-gray-950">
+              <DropdownMenuContent className="bg-gray-950 text-sm sm:text-base">
                 <DropdownMenuLabel>
                   {user?.user_metadata?.name}
                 </DropdownMenuLabel>
@@ -72,9 +78,11 @@ const Header = () => {
           )}
         </div>
       </nav>
-      {loading && <BarLoader className="mb-4" width={"100%"} color="#00eeff" />}
+      {loading && <BarLoader className="mb-4 w-full" color="#00eeff" />}
     </>
   );
 };
 
 export default Header;
+
+// some changes in css for make it more responsive for all devices

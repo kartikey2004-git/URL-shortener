@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Card,
   CardContent,
@@ -100,10 +101,10 @@ const SignUp = () => {
   };
 
   return (
-    <Card className="mt-12">
+    <Card className="mt-8 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto p-4 sm:p-6 lg:p-8">
       <CardHeader>
-        <CardTitle>Signup</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-base sm:text-xl lg:text-2xl break-words">Signup</CardTitle>
+        <CardDescription className="text-xs sm:text-sm lg:text-base break-words">
           Create a new account if you haven&rsquo;t already
         </CardDescription>
         {error && <Error message={error.message} />}
@@ -154,7 +155,7 @@ const SignUp = () => {
           {errors.profile_pic && <Error message={errors.profile_pic} />}
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="">
         <Button className="border-2" onClick={handleSignUp}>
           {loading ? (
             <BeatLoader size={10} color="#00eeff" />

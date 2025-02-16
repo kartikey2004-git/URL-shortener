@@ -134,3 +134,33 @@ there are better ways to do this well for more optimised clicks like by a kafka 
 recharts api for graph
 
 we need to learn how to host domain on hostinger later and all about domain later
+
+
+
+TimeStamps
+
+• Setup react App with shadcn UI
+• Backend Setup with supabase database
+• Hostinger setup : claim the domain (url.elixircommunity.in)
+
+• Defining the routes
+• Building the header
+• Building the landing Page
+• User authentication
+• Login UI
+• Use-fetch custom hook
+• Add Context Api for User state
+• Creating signup api
+• SignUp UI
+• Protected routes
+• Make Header dynamic and logout logic
+• Added row level security
+• Fetch URl API and clicks API
+• Building DashBoard
+• Download QR code
+• Create URL API
+• Create URL Dialog
+• Link ReDirection Page
+• Statistics API
+• Redirection logic
+• Building link stats page

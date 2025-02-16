@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { UrlState } from "../Context";
 import { useNavigate, useSearchParams } from "react-router-dom";
 

@@ -22,8 +22,6 @@ const Dashboard = () => {
     fn: fnUrls,
   } = useFetch(getUrls, user?.id);
 
-  // what this will take is the array of all urls and we will fetch all of ids for urls and for each url I take out the url.id and provided to the  getClicksforurls
-
   const {
     loading: loadingClicks,
     data: clicks,
@@ -45,57 +43,52 @@ const Dashboard = () => {
     if (urls?.length) fnClicks();
   }, [urls?.length]);
 
-  // for searching our urls
-  // includes() : Returns true if key is included in the range, and false otherwise.
-
-  // agar url ka title includes our searchquery jo ki lowercase mein hai , iske baad humein filtered urls mil jayenge
-
-  // agar there is nothing inside searchquery , it returns all the urls
-
   return (
-    <div className="flex flex-col gap-8 ml-6 mr-6">
-      {(loading || loadingClicks) && (
-        <BarLoader width={"100%"} color="#36d7b7" />
-      )}
+    <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8">
+      {(loading || loadingClicks) && <BarLoader width={"100%"} color="#36d7b7" />}
 
-      {/* we are going to be rendering stats like total links created and total clicks that we have and all links that users have created */}
+      {/* Display stats like total links created and total clicks */}
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>Links Created</CardTitle>
+            <CardTitle className="text-base sm:text-lg md:text-xl">Links Created</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>{urls?.length}</p>
+            <p className="text-xl sm:text-2xl">{urls?.length}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>Total Clicks</CardTitle>
+            <CardTitle className="text-base sm:text-lg md:text-xl">Total Clicks</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>{clicks?.length}</p>
+            <p className="text-xl sm:text-2xl">{clicks?.length}</p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="flex justify-between">
-        <h1 className="text-4xl font-extrabold">My Links</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4 sm:mb-0">My Links</h1>
         <CreateLink />
       </div>
 
-      <div className="relative">
-        {/* we want to show a filter like a search option */}
+      <div className="relative w-full">
         <Input
-          className="bg-transparent mb-8"
+          className="bg-transparent mb-8 w-full pl-4 pr-12 py-2 sm:py-3 text-sm sm:text-base"
           type="text"
           placeholder="Filter links"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <Filter className="absolute top-2 right-2 p-1" />
-        {error && <Error message={error?.message} />}
+        {/* Filter icon positioned correctly */}
+        <Filter className="absolute top-1/3 right-4 transform -translate-y-1/2 text-gray-500" />
+      </div>
+
+      {error && <Error message={error?.message} />}
+      
+      <div className="grid grid-cols-1 gap-4">
         {(filteredUrls || []).map((url, id) => {
           return <LinkCard key={id} url={url} fetchUrls={fnUrls} />;
         })}
